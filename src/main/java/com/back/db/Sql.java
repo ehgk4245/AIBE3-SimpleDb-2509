@@ -28,9 +28,6 @@ public class Sql {
     }
 
     public Sql appendIn(String sqlPart, Object... args) {
-        if (args.length == 1 && args[0] instanceof Object[] arr) {
-            args = arr;
-        }
         String placeholders = String.join(",", Collections.nCopies(args.length, "?"));
         sqlPart = sqlPart.replace("?", placeholders);
         return append(sqlPart, args);
